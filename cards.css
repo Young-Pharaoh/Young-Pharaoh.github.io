@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    padding: 2rem;
+    padding: 5rem 2rem;
     background-color: #f7f7fa;
 }
 .cards-container{
@@ -13,30 +13,69 @@
   gap: 30px;
   width: 100%;
   margin: 0 auto;
-  padding: 80px;
+  padding: 80px 108px 80px 104px;
 }
 
 .box {
-  display: flex;
+display: flex;
   align-items: flex-start;
   gap: 20px;
-  background-color: #fff;
+  background-color: #FAFAFA;
   border: 1px solid #eee;
   padding: 80px 40px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 315px;
+  width: 805px;
+  border: 1px solid #E7DAED;
 }
+.box h4{
+  font-size: 26.5px;
+}
+.box p{
+  font-size: 18.5px;
+}
+.box .icon-container {
+  width: 80px;
+  height: 75px;
+  border-radius: 10px;
+  padding: 13px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box .icon-container-color-black {
+  background: linear-gradient(to top right, #27272E, #29272E);
+}
+.box .icon-container-color-yellow {
+  background: linear-gradient(to top right, #F7936F, #FFEF5E);
+}
+.box .icon-container-color-purple {
+  background: linear-gradient(to top right, #57007B, #F76680);
+}
+.box .icon-container-color-green {
+  background: linear-gradient(to top right, #24E795, #67E9F1);
+}
+.box .icon-container-color-pink {
+  background: linear-gradient(to top right, #FF3D9A, #FF92AE);
+}
+.box .icon-container-color-blue {
+  background: linear-gradient(to top right, #509CF5, #68DBF2);
+}
+
 
 .box:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 10px rgba(0,0,0,0.1);
 }
 
+
 .icon {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 12px;
   background-color: #111;
-  padding: 10px;
+  padding: 1px;
   object-fit: contain;
 }
 
@@ -50,4 +89,8 @@
   color: #555;
   line-height: 1.5;
   font-size: 0.95rem;
+}
+
+.cards h2{
+  font-size: 46.5px;
 }
