@@ -9,39 +9,92 @@
 }
 .cards-container{
   display: grid;
+  /* Modificación: Forzar 2 columnas iguales en escritorio
+     - Antes: grid podía crear columnas variables; ahora usamos 2 columnas
+       con `repeat(2, 1fr)` para que siempre haya dos cajas por fila
+       y se expandan uniformemente (cumple tu requisito). */
+  /* Force exactly two columns that expand equally horizontally */
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
   width: 100%;
+  max-width: 1200px; /* keep a readable max width */
   margin: 0 auto;
-  padding: 80px 108px 80px 104px;
+  padding: 40px; /* padding general para separación respecto al contenedor */
+  align-items: start;
+}
+
+/* Responsive breakpoints (modificaciones):
+   - <=900px: pasar a 1 columna para tablets/móviles grandes y ajustar
+     la relación de aspecto a 4/1 (un poco más alta que en escritorio)
+   - <=480px: permitir altura natural (aspect-ratio: auto) para evitar
+     recortar texto en pantallas muy pequeñas. */
+@media (max-width: 900px) {
+  .cards-container {
+    grid-template-columns: 1fr; /* una columna en pantallas pequeñas */
+    padding: 20px;
+    gap: 20px;
+  }
+  .box {
+    aspect-ratio: 4 / 1; /* más alto en tablet para legibilidad */
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+    padding: 12px;
+    gap: 16px;
+  }
+  .box {
+    aspect-ratio: auto; /* permitir que la caja crezca en altura si el texto es largo */
+    height: auto;
+    padding: 12px;
+  }
 }
 
 .box {
-display: flex;
-  align-items: flex-start;
-  gap: 20px;
+  /* Modificación principal: convertir las cajas en rectángulos más grandes
+     y horizontales para imitar el diseño del ejemplo enviado.
+     - `aspect-ratio: 2/1` fija la proporción ancho:alto (más alta que 3/1)
+       para que las cajas sean visualmente más grandes.
+     - `align-items: center` centra verticalmente icono y texto.
+     - Padding aumentado para dar espacio interno y mejorar la estética. */
+  display: flex;
+  align-items: center; /* centrar verticalmente icono + texto */
+  gap: 24px;
   background-color: #FAFAFA;
-  border: 1px solid #eee;
-  padding: 80px 40px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  height: 315px;
-  width: 805px;
   border: 1px solid #E7DAED;
+  aspect-ratio: 2 / 1; /* relación ancho:alto para cajas más grandes */
+  width: 100%;
+  padding: 32px 44px; /* más espacio interior como en la maqueta */
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
 }
 .box h4{
-  font-size: 26.5px;
+  /* Incremento de tamaño del título para mejorar jerarquía visual */
+  font-size: 1.35rem;
+  margin: 0 0 8px 0;
 }
 .box p{
-  font-size: 18.5px;
+  /* Párrafo: tamaño y line-height ajustados para mejor lectura en cajas
+     más grandes. */
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.6;
 }
 .box .icon-container {
-  width: 80px;
-  height: 75px;
-  border-radius: 10px;
-  padding: 13px 16px;
+  /* Icon container: agrandado y con radio más suave para lucir más presente
+     dentro de la caja amplia. */
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .box .icon-container-color-black {
@@ -71,24 +124,38 @@ display: flex;
 
 
 .icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+  /* Icono interno: incrementado para mantener proporción con el contenedor */
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
   background-color: #111;
   padding: 1px;
   object-fit: contain;
 }
 
-.content h3 {
-  font-size: 1.2rem;
-  color: #111;
-  margin-bottom: 8px;
+/* Box inner content layout - this targets the markup used in index.html (.box-content) */
+/* Contenido interno de la caja (.box-content):
+   - Centrado verticalmente para que el título y párrafo estén alineados con
+     el icono a la izquierda.
+   - Ajustes de tipografía para mantener consistencia con la nueva caja. */
+.box .box-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centra texto verticalmente dentro de la caja */
+  align-items: flex-start;
 }
 
-.content p {
+.box .box-content h4 {
+  font-size: 1.35rem;
+  color: #111;
+  margin: 0 0 6px 0;
+}
+
+.box .box-content p {
   color: #555;
-  line-height: 1.5;
-  font-size: 0.95rem;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 0;
 }
 
 .cards h2{
