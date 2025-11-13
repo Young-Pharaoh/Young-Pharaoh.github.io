@@ -151,8 +151,12 @@ strong{
 }
 
 .arrow{
-    font-size: 48px;
     cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.arrow:hover{
+    transform: scale(1.1);
+
 }
 .left-arrow{
     width: 100%;
@@ -261,6 +265,9 @@ footer{
     color: #999;
 }
 
+.sec-1 a:hover{
+    color: #57007B;
+}
 .sec-1 section{
     display: flex;
     flex-direction: column;
@@ -297,6 +304,7 @@ section .social-footer {
   width: 0.9vw;
   height: auto;
 }
+
 .social-circle{
     width: 35px;
     height: 35px;
@@ -308,6 +316,10 @@ section .social-footer {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
+}
+.social-circle:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 hr{
     width: 100%;
